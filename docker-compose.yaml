@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web-app:
+    build: .
+    container_name: python_web_app
+    ports:
+      - "3000:3000"          # Прокидаємо HTTP порт
+      - "5000:5000/udp"      # Прокидаємо UDP порт для Socket-сервера
+    volumes:
+      # Монтуємо локальну папку storage у папку всередині контейнера
+      - ./storage:/app/storage
+    restart: always
